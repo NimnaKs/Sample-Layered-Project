@@ -3,6 +3,7 @@ package bo.custom.impl;
 import bo.custom.ItemBO;
 import dao.CrudDAO;
 import dao.Custom.impl.ItemDAOImpl;
+import dao.DAOFactory;
 import model.CustomerDTO;
 import model.ItemDTO;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class ItemBOImpl implements ItemBO {
 
-    CrudDAO<ItemDTO,String> itemDAO = new ItemDAOImpl();
+    CrudDAO<ItemDTO,String> itemDAO = (CrudDAO<ItemDTO, String>) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
 
 
     @Override

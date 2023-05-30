@@ -4,6 +4,7 @@ import bo.custom.PurchaseOrderBO;
 import dao.CrudDAO;
 import dao.Custom.impl.OrderDAOImpl;
 import dao.Custom.impl.OrderDetailsDAOImpl;
+import dao.DAOFactory;
 import db.DBConnection;
 import model.ItemDTO;
 import model.OrderDTO;
@@ -17,9 +18,9 @@ import java.util.List;
 
 public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
-    CrudDAO<OrderDTO,String> orderDAO=new OrderDAOImpl();
+    CrudDAO<OrderDTO,String> orderDAO= (CrudDAO<OrderDTO, String>) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
 
-    CrudDAO<OrderDetailDTO,String> orderDetailsDAO=new OrderDetailsDAOImpl();
+    CrudDAO<OrderDetailDTO,String> orderDetailsDAO= (CrudDAO<OrderDetailDTO, String>) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER_DETAILS);
 
     ItemBOImpl itemBO=new ItemBOImpl();
 
