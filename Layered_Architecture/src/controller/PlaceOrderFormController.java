@@ -1,5 +1,6 @@
 package controller;
 
+import bo.BOFactory;
 import bo.custom.impl.CustomerBOImpl;
 import bo.custom.impl.ItemBOImpl;
 import bo.custom.impl.PurchaseOrderBOImpl;
@@ -58,11 +59,11 @@ public class PlaceOrderFormController {
     public Label lblTotal;
     private String orderId;
 
-    CustomerBOImpl customerBO=new CustomerBOImpl();
+    CustomerBOImpl customerBO= (CustomerBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
 
-    ItemBOImpl itemBO=new ItemBOImpl();
+    ItemBOImpl itemBO= (ItemBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
 
-    PurchaseOrderBOImpl orderBO=new PurchaseOrderBOImpl();
+    PurchaseOrderBOImpl orderBO= (PurchaseOrderBOImpl) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PURCHASEORDER);
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
@@ -351,6 +352,5 @@ public class PlaceOrderFormController {
         return false;
 
     }
-
 
 }
