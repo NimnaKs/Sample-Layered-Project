@@ -2,13 +2,11 @@ package bo.custom.impl;
 
 import bo.custom.PurchaseOrderBO;
 import dao.CrudDAO;
-import dao.Custom.impl.OrderDAOImpl;
-import dao.Custom.impl.OrderDetailsDAOImpl;
 import dao.DAOFactory;
 import db.DBConnection;
-import model.ItemDTO;
-import model.OrderDTO;
-import model.OrderDetailDTO;
+import dto.ItemDTO;
+import dto.OrderDTO;
+import dto.OrderDetailDTO;
 
 import java.sql.Connection;
 import java.sql.Date;

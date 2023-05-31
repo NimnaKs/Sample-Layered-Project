@@ -2,29 +2,24 @@ package dao.Custom.impl;
 
 import dao.CrudDAO;
 import dao.SQLUtil;
-import db.DBConnection;
-import model.ItemDTO;
-import model.OrderDTO;
-import model.OrderDetailDTO;
+import entity.Order;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
-public class OrderDAOImpl implements CrudDAO<OrderDTO,String> {
+public class OrderDAOImpl implements CrudDAO<Order,String> {
     @Override
-    public ArrayList<OrderDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Order> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean save(OrderDTO data) throws SQLException, ClassNotFoundException {
+    public boolean save(Order data) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO `Orders` (oid, date, customerID) VALUES (?,?,?)",data.getOrderId(),data.getOrderDate(),data.getCustomerId());
     }
 
     @Override
-    public boolean update(OrderDTO data) throws SQLException, ClassNotFoundException {
+    public boolean update(Order data) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -45,7 +40,7 @@ public class OrderDAOImpl implements CrudDAO<OrderDTO,String> {
     }
 
     @Override
-    public OrderDTO search(String Value) throws SQLException, ClassNotFoundException {
+    public Order search(String Value) throws SQLException, ClassNotFoundException {
         return null;
     }
 

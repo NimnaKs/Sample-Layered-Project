@@ -2,20 +2,21 @@ package dao.Custom.impl;
 
 import dao.Custom.CustomerDAO;
 import dao.SQLUtil;
-import model.CustomerDTO;
+import entity.Customer;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO {
+
     @Override
-    public ArrayList<CustomerDTO> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Customer");
 
-        ArrayList<CustomerDTO> customerDataList = new ArrayList<>();
+        ArrayList<Customer> customerDataList = new ArrayList<>();
 
         while (rst.next()) {
-            customerDataList.add(new CustomerDTO(rst.getString(1), rst.getString(2), rst.getString(3)));
+            customerDataList.add(new Customer(rst.getString(1), rst.getString(2), rst.getString(3)));
         }
 
         return customerDataList;
@@ -23,12 +24,12 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean save(CustomerDTO data) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer data) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("INSERT INTO Customer (id,name, address) VALUES (?,?,?)",data.getId(),data.getName(),data.getAddress());
     }
 
     @Override
-    public boolean update(CustomerDTO data) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer data) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("UPDATE Customer SET name=?, address=? WHERE id=?",data.getName(),data.getAddress(),data.getId());
     }
 
@@ -55,11 +56,11 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public CustomerDTO search(String Value) throws SQLException, ClassNotFoundException {
+    public Customer search(String Value) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Customer WHERE id=?");
         rst.next();
-        CustomerDTO customerDTO = new CustomerDTO(Value + "", rst.getString("name"), rst.getString("address"));
-        return customerDTO;
+        Customer customer = new Customer(Value + "", rst.getString("name"), rst.getString("address"));
+        return customer;
     }
 
 //    @Override

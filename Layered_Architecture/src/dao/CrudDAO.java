@@ -1,6 +1,6 @@
 package dao;
 
-import model.CustomerDTO;
+import entity.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

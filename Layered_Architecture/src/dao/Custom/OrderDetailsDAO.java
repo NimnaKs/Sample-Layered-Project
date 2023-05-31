@@ -1,7 +1,7 @@
 package dao.Custom;
 
 import dao.CrudDAO;
-import model.OrderDetailDTO;
+import dto.OrderDetailDTO;
 
 public interface OrderDetailsDAO extends CrudDAO<OrderDetailDTO,String> {
 }
